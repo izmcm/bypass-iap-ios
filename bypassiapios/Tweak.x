@@ -3,19 +3,50 @@
  
 %hook SKPaymentTransaction
 - (long long)transactionState {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bypass called!"
-        message:@"Check if premium mode is unlocked when using the app"
-        delegate:nil
-        cancelButtonTitle:@"OK"
-        otherButtonTitles:nil];
-    [alert show];
+	%log;
+    
+    NSLog(@"SKPaymentTransaction bypass called!");
 
 	return 1;
 }
 %end
 
 // Insecure Storage
+%hook NSUserDefaults
+- (BOOL)boolForKey:(id)arg1 {
+	%log;
+	NSString *lowerKey = [arg1 lowercaseString];
+	NSString *finalKey = [lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
 
+    NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", nil];
+    
+    for(NSString *key in trueKeys) {
+    	if([finalKey containsString:key]) {
+    		NSLog(@"UserDefaults bypass called!");
+			return 1;
+		}
+    }
+
+	return %orig;
+}
+
+- (double)doubleForKey:(id)arg1 {
+	%log;
+	NSString *lowerKey = [arg1 lowercaseString];
+	NSString *finalKey = [lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
+
+    NSArray *trueKeys = [NSArray arrayWithObjects: @"vipdate", @"premiumdate", @"expirationdate", @"expireddate", nil];
+    
+    for(NSString *key in trueKeys) {
+    	if([finalKey containsString:key]) {
+    		NSLog(@"UserDefaults bypass called!");
+			return 9999999999999;
+		}
+    }
+
+	return %orig;
+}
+%end
 
 // Hooking a class method
 //+ (id)sharedInstance {

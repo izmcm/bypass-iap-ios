@@ -4,6 +4,8 @@ export THEOS_DEVICE_PORT=2222
 TARGET := iphone:clang:latest:7.0
 INSTALL_TARGET_PROCESSES = SpringBoard
 
+DEBUG = 1
+
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = bypassIAPiOS

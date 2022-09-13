@@ -23,20 +23,54 @@
 #define _LOGOS_RETURN_RETAINED
 #endif
 
-@class SKPaymentTransaction; 
-static long long (*_logos_orig$_ungrouped$SKPaymentTransaction$transactionState)(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST, SEL); static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST, SEL); 
+@class SKPaymentTransaction; @class NSUserDefaults; 
+static long long (*_logos_orig$_ungrouped$SKPaymentTransaction$transactionState)(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST, SEL); static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST, SEL); static BOOL (*_logos_orig$_ungrouped$NSUserDefaults$boolForKey$)(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); static double (*_logos_orig$_ungrouped$NSUserDefaults$doubleForKey$)(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); static double _logos_method$_ungrouped$NSUserDefaults$doubleForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); 
 
 #line 4 "Tweak.x"
 
 static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Bypass called!"
-        message:@"Check if premium mode is unlocked when using the app"
-        delegate:nil
-        cancelButtonTitle:@"OK"
-        otherButtonTitles:nil];
-    [alert show];
+	NSLog(@"-[<SKPaymentTransaction: %p> transactionState]", self);
+    
+    NSLog(@"SKPaymentTransaction bypass called!");
 
 	return 1;
+}
+
+
+
+
+static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {
+	NSLog(@"-[<NSUserDefaults: %p> boolForKey:%@]", self, arg1);
+	NSString *lowerKey = [arg1 lowercaseString];
+	NSString *finalKey = [lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
+
+    NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", nil];
+    
+    for(NSString *key in trueKeys) {
+    	if([finalKey containsString:key]) {
+    		NSLog(@"UserDefaults bypass called!");
+			return 1;
+		}
+    }
+
+	return _logos_orig$_ungrouped$NSUserDefaults$boolForKey$(self, _cmd, arg1);
+}
+
+static double _logos_method$_ungrouped$NSUserDefaults$doubleForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {
+	NSLog(@"-[<NSUserDefaults: %p> doubleForKey:%@]", self, arg1);
+	NSString *lowerKey = [arg1 lowercaseString];
+	NSString *finalKey = [lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
+
+    NSArray *trueKeys = [NSArray arrayWithObjects: @"vipdate", @"premiumdate", @"expirationdate", @"expireddate", nil];
+    
+    for(NSString *key in trueKeys) {
+    	if([finalKey containsString:key]) {
+    		NSLog(@"UserDefaults bypass called!");
+			return 9999999999999;
+		}
+    }
+
+	return _logos_orig$_ungrouped$NSUserDefaults$doubleForKey$(self, _cmd, arg1);
 }
 
 
@@ -61,9 +95,6 @@ static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(
 
 
 
-
-
-
 static __attribute__((constructor)) void _logosLocalInit() {
-{Class _logos_class$_ungrouped$SKPaymentTransaction = objc_getClass("SKPaymentTransaction"); { MSHookMessageEx(_logos_class$_ungrouped$SKPaymentTransaction, @selector(transactionState), (IMP)&_logos_method$_ungrouped$SKPaymentTransaction$transactionState, (IMP*)&_logos_orig$_ungrouped$SKPaymentTransaction$transactionState);}} }
-#line 41 "Tweak.x"
+{Class _logos_class$_ungrouped$SKPaymentTransaction = objc_getClass("SKPaymentTransaction"); { MSHookMessageEx(_logos_class$_ungrouped$SKPaymentTransaction, @selector(transactionState), (IMP)&_logos_method$_ungrouped$SKPaymentTransaction$transactionState, (IMP*)&_logos_orig$_ungrouped$SKPaymentTransaction$transactionState);}Class _logos_class$_ungrouped$NSUserDefaults = objc_getClass("NSUserDefaults"); { MSHookMessageEx(_logos_class$_ungrouped$NSUserDefaults, @selector(boolForKey:), (IMP)&_logos_method$_ungrouped$NSUserDefaults$boolForKey$, (IMP*)&_logos_orig$_ungrouped$NSUserDefaults$boolForKey$);}{ MSHookMessageEx(_logos_class$_ungrouped$NSUserDefaults, @selector(doubleForKey:), (IMP)&_logos_method$_ungrouped$NSUserDefaults$doubleForKey$, (IMP*)&_logos_orig$_ungrouped$NSUserDefaults$doubleForKey$);}} }
+#line 72 "Tweak.x"
