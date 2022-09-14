@@ -1,6 +1,5 @@
 
 // Receipt validation missing
- 
 %hook SKPaymentTransaction
 - (long long)transactionState {
 	%log;
