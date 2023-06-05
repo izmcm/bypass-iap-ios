@@ -15,7 +15,7 @@
 	NSString *lowerKey = [arg1 lowercaseString];
 	NSString *finalKey = [[lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"_" withString:@""];
 
-	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"subscribtion", nil];
+	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"subscribtion", @"fullversion", @"isactive", @"adunlock", @"bought", nil];
 	
 	for(NSString *key in trueKeys) {
 		if([finalKey containsString:key]) {

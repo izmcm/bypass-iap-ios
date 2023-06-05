@@ -1,7 +1,6 @@
 #line 1 "Tweak.x"
 
 
- 
 
 #include <substrate.h>
 #if defined(__clang__)
@@ -26,13 +25,11 @@
 @class SKPaymentTransaction; @class NSUserDefaults; 
 static long long (*_logos_orig$_ungrouped$SKPaymentTransaction$transactionState)(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST, SEL); static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST, SEL); static BOOL (*_logos_orig$_ungrouped$NSUserDefaults$boolForKey$)(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); static double (*_logos_orig$_ungrouped$NSUserDefaults$doubleForKey$)(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); static double _logos_method$_ungrouped$NSUserDefaults$doubleForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST, SEL, id); 
 
-#line 4 "Tweak.x"
+#line 3 "Tweak.x"
 
 static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(_LOGOS_SELF_TYPE_NORMAL SKPaymentTransaction* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd) {
 	NSLog(@"-[<SKPaymentTransaction: %p> transactionState]", self);
-    
-    NSLog(@"SKPaymentTransaction bypass called!");
-
+	NSLog(@"SKPaymentTransaction bypass called!");
 	return 1;
 }
 
@@ -42,16 +39,16 @@ static long long _logos_method$_ungrouped$SKPaymentTransaction$transactionState(
 static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {
 	NSLog(@"-[<NSUserDefaults: %p> boolForKey:%@]", self, arg1);
 	NSString *lowerKey = [arg1 lowercaseString];
-	NSString *finalKey = [lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
+	NSString *finalKey = [[lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"_" withString:@""];
 
-    NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", nil];
-    
-    for(NSString *key in trueKeys) {
-    	if([finalKey containsString:key]) {
-    		NSLog(@"UserDefaults bypass called!");
+	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"subscribtion", @"fullversion", @"isactive", @"adunlock", @"bought", nil];
+	
+	for(NSString *key in trueKeys) {
+		if([finalKey containsString:key]) {
+			NSLog(@"UserDefaults bypass called!");
 			return 1;
 		}
-    }
+	}
 
 	return _logos_orig$_ungrouped$NSUserDefaults$boolForKey$(self, _cmd, arg1);
 }
@@ -59,42 +56,22 @@ static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE
 static double _logos_method$_ungrouped$NSUserDefaults$doubleForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {
 	NSLog(@"-[<NSUserDefaults: %p> doubleForKey:%@]", self, arg1);
 	NSString *lowerKey = [arg1 lowercaseString];
-	NSString *finalKey = [lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""];
+	NSString *finalKey = [[lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"_" withString:@""];
 
-    NSArray *trueKeys = [NSArray arrayWithObjects: @"vipdate", @"premiumdate", @"expirationdate", @"expireddate", nil];
-    
-    for(NSString *key in trueKeys) {
-    	if([finalKey containsString:key]) {
-    		NSLog(@"UserDefaults bypass called!");
+	NSArray *trueKeys = [NSArray arrayWithObjects: @"vipdate", @"premiumdate", @"expirationdate", @"expireddate", nil];
+	
+	for(NSString *key in trueKeys) {
+		if([finalKey containsString:key]) {
+			NSLog(@"UserDefaults bypass called!");
 			return 9999999999999;
 		}
-    }
+	}
 
 	return _logos_orig$_ungrouped$NSUserDefaults$doubleForKey$(self, _cmd, arg1);
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 static __attribute__((constructor)) void _logosLocalInit() {
 {Class _logos_class$_ungrouped$SKPaymentTransaction = objc_getClass("SKPaymentTransaction"); { MSHookMessageEx(_logos_class$_ungrouped$SKPaymentTransaction, @selector(transactionState), (IMP)&_logos_method$_ungrouped$SKPaymentTransaction$transactionState, (IMP*)&_logos_orig$_ungrouped$SKPaymentTransaction$transactionState);}Class _logos_class$_ungrouped$NSUserDefaults = objc_getClass("NSUserDefaults"); { MSHookMessageEx(_logos_class$_ungrouped$NSUserDefaults, @selector(boolForKey:), (IMP)&_logos_method$_ungrouped$NSUserDefaults$boolForKey$, (IMP*)&_logos_orig$_ungrouped$NSUserDefaults$boolForKey$);}{ MSHookMessageEx(_logos_class$_ungrouped$NSUserDefaults, @selector(doubleForKey:), (IMP)&_logos_method$_ungrouped$NSUserDefaults$doubleForKey$, (IMP*)&_logos_orig$_ungrouped$NSUserDefaults$doubleForKey$);}} }
-#line 72 "Tweak.x"
+#line 49 "Tweak.x"
