@@ -46,7 +46,7 @@ static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE
 	NSString *lowerKey = [arg1 lowercaseString];
 	NSString *finalKey = [[lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"_" withString:@""];
 
-	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"isenabled", @"subscribtion", @"fullversion", @"isactive", @"adunlock", @"bought", @"userusage", @"testmode", @"sessionenabled", @"lifetimeaccess", @"showallcontent", @"playerregistered", @"isupgradeuser",  @"isusingpro", @"canuse", @"healthyalternativesenabled", @"simulatepro", nil];
+	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"isenabled", @"subscribtion", @"fullversion", @"isactive", @"adunlock", @"bought", @"userusage", @"testmode", @"lifetimeaccess", @"showallcontent", @"playerregistered", @"isupgradeuser",  @"isusingpro", @"canuse", @"healthyalternativesenabled", @"simulatepro", @"featurefreedom", @"trialeligibilityenabled", @"viewall", @"qatracking", @"runningtests", @"ignorepro", @"istest", @"isfree", @"subscriber", @"islifetimeuser", @"isforeveruser", nil];
 
 	for(NSString *key in trueKeys) {
 		if([finalKey containsString:key]) {

@@ -1,7 +1,7 @@
 { 
 	Filter = {
 		Bundles = ( 
-			"wtf.riedel.one-sec"
+			"us.afterlight.Afterlight"
 		); 
 	}; 
 }
