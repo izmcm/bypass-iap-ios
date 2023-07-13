@@ -3,7 +3,8 @@
 %hook SKPaymentTransaction
 - (long long)transactionState {
 	%log;
-	NSLog(@"SKPaymentTransaction bypass called!");
+	BOOL ans = %orig;
+	NSLog(@"SKPaymentTransaction bypass called! Changing %d to 1", ans);
 	return 1;
 }
 %end
@@ -12,31 +13,50 @@
 %hook NSUserDefaults
 - (BOOL)boolForKey:(id)arg1 {
 	%log;
+	BOOL ans = %orig;
+
+	// NSLog(@"UserDefaults response is %d", ans);
+
 	NSString *lowerKey = [arg1 lowercaseString];
 	NSString *finalKey = [[lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"_" withString:@""];
 
-	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"subscribtion", @"fullversion", @"isactive", @"adunlock", @"bought", nil];
-	
+	NSArray *trueKeys = [NSArray arrayWithObjects: @"plus", @"premium", @"vip", @"purchase", @"removeads", @"subscription", @"subscribed", @"includedebugmenu", @"versaocompleta", @"ispro", @"isenabled", @"subscribtion", @"fullversion", @"isactive", @"adunlock", @"bought", @"userusage", @"testmode", @"sessionenabled", @"lifetimeaccess", @"showallcontent", @"playerregistered", @"isupgradeuser",  @"isusingpro", @"canuse", @"healthyalternativesenabled", @"simulatepro", nil];
+
 	for(NSString *key in trueKeys) {
 		if([finalKey containsString:key]) {
-			NSLog(@"UserDefaults bypass called!");
+			NSLog(@"UserDefaults bypass called! Changing %d to 1", ans);
 			return 1;
 		}
 	}
+
+	NSArray *falseKeys = [NSArray arrayWithObjects: @"expire", @"expired", @"bpro", nil];
+	
+	for(NSString *key in falseKeys) {
+		if([finalKey containsString:key]) {
+			NSLog(@"UserDefaults bypass called! Changing %d to 0", ans);
+			return 0;
+		}
+	}
+
 
 	return %orig;
 }
 
 - (double)doubleForKey:(id)arg1 {
 	%log;
+	double ans = %orig;
+
+	// NSLog(@"UserDefaults response is %f", ans);
+
 	NSString *lowerKey = [arg1 lowercaseString];
 	NSString *finalKey = [[lowerKey stringByReplacingOccurrencesOfString:@"-" withString:@""] stringByReplacingOccurrencesOfString:@"_" withString:@""];
 
-	NSArray *trueKeys = [NSArray arrayWithObjects: @"vipdate", @"premiumdate", @"expirationdate", @"expireddate", nil];
+	NSArray *trueKeys = [NSArray arrayWithObjects: @"vipdate", @"vipexpiretimestamp", @"premiumdate", @"expirationdate", @"expireddate", nil];
+
 	
 	for(NSString *key in trueKeys) {
 		if([finalKey containsString:key]) {
-			NSLog(@"UserDefaults bypass called!");
+			NSLog(@"UserDefaults bypass called! Changing %f to 999+", ans);
 			return 9999999999999;
 		}
 	}

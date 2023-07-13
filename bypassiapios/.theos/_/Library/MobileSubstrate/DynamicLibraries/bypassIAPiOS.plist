@@ -1,7 +1,7 @@
 { 
 	Filter = {
 		Bundles = ( 
-			"com.abishkking.periodcalendar"
+			"wtf.riedel.one-sec"
 		); 
 	}; 
 }
