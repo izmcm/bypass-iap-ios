@@ -25,21 +25,21 @@
 	for(NSString *key in trueKeys) {
 		if([finalKey containsString:key]) {
 			NSLog(@"UserDefaults bypass called! Changing %d to 1", ans);
-			return 1;
+			ans = 1;
 		}
 	}
 
-	NSArray *falseKeys = [NSArray arrayWithObjects: @"expire", @"expired", @"bpro", nil];
+	NSArray *falseKeys = [NSArray arrayWithObjects: @"expire", @"expired", @"premiumdisabled", @"bpro", nil];
 	
 	for(NSString *key in falseKeys) {
 		if([finalKey containsString:key]) {
 			NSLog(@"UserDefaults bypass called! Changing %d to 0", ans);
-			return 0;
+			ans = 0;
 		}
 	}
 
 
-	return %orig;
+	return ans;
 }
 
 - (double)doubleForKey:(id)arg1 {

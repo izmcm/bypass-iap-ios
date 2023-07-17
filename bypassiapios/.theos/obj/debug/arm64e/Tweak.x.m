@@ -51,21 +51,21 @@ static BOOL _logos_method$_ungrouped$NSUserDefaults$boolForKey$(_LOGOS_SELF_TYPE
 	for(NSString *key in trueKeys) {
 		if([finalKey containsString:key]) {
 			NSLog(@"UserDefaults bypass called! Changing %d to 1", ans);
-			return 1;
+			ans = 1;
 		}
 	}
 
-	NSArray *falseKeys = [NSArray arrayWithObjects: @"expire", @"expired", @"bpro", nil];
+	NSArray *falseKeys = [NSArray arrayWithObjects: @"expire", @"expired", @"premiumdisabled", @"bpro", nil];
 	
 	for(NSString *key in falseKeys) {
 		if([finalKey containsString:key]) {
 			NSLog(@"UserDefaults bypass called! Changing %d to 0", ans);
-			return 0;
+			ans = 0;
 		}
 	}
 
 
-	return _logos_orig$_ungrouped$NSUserDefaults$boolForKey$(self, _cmd, arg1);
+	return ans;
 }
 
 static double _logos_method$_ungrouped$NSUserDefaults$doubleForKey$(_LOGOS_SELF_TYPE_NORMAL NSUserDefaults* _LOGOS_SELF_CONST __unused self, SEL __unused _cmd, id arg1) {

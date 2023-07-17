@@ -1,7 +1,7 @@
 { 
 	Filter = {
 		Bundles = ( 
-			"us.afterlight.Afterlight"
+			"app-bundle-id"
 		); 
 	}; 
 }
