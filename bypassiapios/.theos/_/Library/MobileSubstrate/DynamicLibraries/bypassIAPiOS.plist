@@ -1,7 +1,27 @@
 { 
 	Filter = {
 		Bundles = ( 
-			"com.fiftythree.paper"
+			"com.picsart.studio",
+			"com.aplicativoslegais.Memes-For-WhatsApp",
+			"com.camerasideas.InstaShot",
+			"com.tranzmate.tranzmate1",
+			"com.intsig.CamScannerLite",
+			"com.moonvideo.iOS.resso",
+			"fonts.app",
+			"com.codewaystudios.facedance",
+			"com.codeway.wonder",
+			"com.bocadil.amigoinvisible",
+			"com.photo.boomart",
+			"aiby.prowidget",
+			"app.hallow.Hallow",
+			"ylee.studio.instories",
+			"com.skysoft.removalfree",
+			"com.bigwinepot.nwdn.international",
+			"com.teix.allinOne",
+			"com.lemon.lvoverseas",
+			"com.canva.canvaeditor",
+			"com.desrotulando.Desrotulando",
+			"com.magicv.AirBrush"
 		); 
 	}; 
 }
