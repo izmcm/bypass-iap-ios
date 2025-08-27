@@ -13,6 +13,7 @@ This code was developed for educational and scientific purposes. Do not use this
   OR
 
 * 1 Security Research Device
+* A MacOS device
 
 ## Step-by-Step Jailbroken iPhone
 1. Establish an SSH connection between your computer and your iPhone.
