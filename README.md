@@ -38,6 +38,7 @@ The considered badges are: Available, Functional, and Sustainable.
 2. Run `build-install.sh` script
 
 ⚠️ You can check the logs using the Console app on your macOS to identify new vulnerable keys and update the script. However, using the Console app affects the performance of your iPhone.
+
 ⚠️ All script modifications should be made in the `Tweak.x` or `bypass-iap.m` files.
 
 ## Disclaimer of Damages
