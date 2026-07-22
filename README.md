@@ -13,9 +13,25 @@ This code was developed for educational and scientific purposes. Do not use this
 * [Disclaimer of Damages](#disclaimer-of-damages)
 
 ## Repository organization
-* `tweak/` — Theos tweak project (`Tweak.x`, `Makefile`, `bypassIAPiOS.plist`) used in the jailbroken iPhone setup.
-* `srd-dylib/` — dylib and build script (`bypass-iap.m`, `build-install.sh`) used in the Security Research Device setup.
-* `tables/` — LaTeX tables from the paper (`app_agnostic_table`, `app_specific_table`) with source and PDF.
+```
+bypass-iap-ios/
+│
+├── tweak/                       # Theos tweak project used in the jailbroken iPhone setup
+│   ├── Tweak.x                  # Tweak source code
+│   ├── Makefile                 # Theos build configuration (THEOS_DEVICE_IP/PORT)
+│   ├── control                  # Package metadata
+│   └── bypassIAPiOS.plist       # Target app bundle IDs
+│
+├── srd-dylib/                   # dylib and build script used in the Security Research Device setup
+│   ├── bypass-iap.m             # dylib source code
+│   └── build-install.sh         # Build and install script
+│
+└── tables/                      # LaTeX tables from the paper
+    ├── app_agnostic_table.tex
+    ├── app_agnostic_table.pdf
+    ├── app_specific_table.tex
+    └── app_specific_table.pdf
+```
 
 ## Considered Badges
 The considered badges are: Available, Functional, and Sustainable.
