@@ -38,6 +38,7 @@ The considered badges are: Available, Functional, and Sustainable.
 
 ## Required Materials
 * An iPhone with jailbreak and SSH access OR a Security Research Device
+  * The [experiments] section was tested using an [iPhone 7 iOS 15.8.8 with Dopamine](https://ios.cfw.guide/installing-dopamine-trollstore/), but it may work with any jailbroke iPhone. A collection of tutorials to jailbroke different iPhone's is [here](https://ios.cfw.guide/)
 * A MacOS device. The computer should have:
   * SSH access ([iPhoneTunnel](https://code.google.com/archive/p/iphonetunnel-mac/downloads), [iProxy](https://command-not-found.com/iproxy), etc.)
   * [Theos](https://theos.dev/) build system installed
