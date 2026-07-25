@@ -38,13 +38,13 @@ The considered badges are: Available, Functional, and Sustainable.
 ## Environment Setup
 This guide walks you through setting up everything needed to reproduce the experiments described in the [experiments] section, starting from scratch. No prior jailbreaking experience is assumed. By the end, you will have a jailbroken iPhone that your Mac can connect to via SSH, along with the build tools needed to compile the tweaks used in this work.
 
-## What you will end up with
+### What you will end up with
 
 - A jailbroken iPhone running an SSH server (so it can accept remote connections).
 - A Mac that can open a command-line session directly on that iPhone through the USB cable.
 - The Theos build system on your Mac, used to compile the tweaks.
 
-## Before you start
+### Before you start
 
 - **Use a dedicated device.** Jailbreak the iPhone you are willing to experiment on, not your daily phone. Back it up first.
 - **You must own the device.** These steps assume the iPhone and Mac are yours and used for research.
@@ -52,9 +52,9 @@ This guide walks you through setting up everything needed to reproduce the exper
 
 ---
 
-## Part 1 — Prepare the iPhone
+### Part 1 — Prepare the iPhone
 
-### Step 1. Jailbreak the iPhone
+#### Step 1. Jailbreak the iPhone
 
 A *jailbreak* removes Apple's restrictions so you can install software (like an SSH server) that Apple normally blocks. Alternatively, if you have an official Apple **Security Research Device (SRD)**, you can skip the jailbreak — it already grants the needed access.
 
@@ -68,7 +68,7 @@ Using Dopamine, you should be asked
 
 > Jailbreaks can occasionally fail or need to be reapplied after the phone restarts. If Sileo disappears or apps stop working after a reboot, simply re-run the jailbreak from the Dopamine app.
 
-### Step 2. Install OpenSSH
+#### Step 2. Install OpenSSH
 
 **OpenSSH** is the software that lets your Mac log into the iPhone remotely and type commands on it.
 
@@ -77,7 +77,7 @@ Using Dopamine, you should be asked
 3. Select the **OpenSSH** package and tap **Install** (or **Get** / **Modify**).
 4. When prompted, tap to confirm, then let it **respring** (the screen goes black briefly and the Home Screen reloads). This is normal.
 
-### Step 3. Note your SSH password (important)
+#### Step 3. Note your SSH password (important)
 
 When jailbreaking with Dopamine, you are asked to set a password during the process. This is the same password you will use to log in over SSH, together with the username mobile. Keep it somewhere safe — you will type it every time you connect.
 
@@ -85,9 +85,9 @@ If you used a different jailbreak and were not asked to set a password, the defa
 
 ---
 
-## Part 2 — Prepare the Mac
+### Part 2 — Prepare the Mac
 
-### Step 1. Install Homebrew
+#### Step 1. Install Homebrew
 
 **Homebrew** is a tool that installs other command-line software on macOS with a single command.
 
@@ -106,7 +106,7 @@ If you used a different jailbreak and were not asked to set a password, the defa
 brew install libimobiledevice
 ```
 
-### Step 3. Install the Theos build system
+#### Step 3. Install the Theos build system
 
 **Theos** is what compiles the tweaks used in the experiments.
 
@@ -128,9 +128,9 @@ brew install libimobiledevice
 
 ---
 
-## Part 3 — Connect the Mac to the iPhone
+### Part 3 — Connect the Mac to the iPhone
 
-### Step 1. Plug in and start the tunnel
+#### Step 1. Plug in and start the tunnel
 
 1. Connect the iPhone to the Mac with a USB cable. If the iPhone asks whether to **Trust This Computer**, tap **Trust** and enter your passcode.
 2. In Terminal, start the tunnel:
@@ -141,7 +141,7 @@ brew install libimobiledevice
 
    This forwards port `2222` on your Mac to the iPhone's SSH port (`22`) through the cable. **Leave this Terminal window open** — closing it ends the connection.
 
-### Step 2. Log in to the iPhone
+#### Step 2. Log in to the iPhone
 
 1. Open a **second** Terminal window (`Cmd + N`).
 2. Connect over SSH:
@@ -157,7 +157,7 @@ You are now logged into the iPhone. Any command you type runs on the phone.
 
 ---
 
-## Troubleshooting
+### Troubleshooting
 
 **"REMOTE HOST IDENTIFICATION HAS CHANGED!" / "Host key verification failed."**
 This is expected if you re-jailbroke, reinstalled OpenSSH, or switched devices — the phone's identity key changed, so your Mac's saved copy no longer matches. Clear the old saved key and reconnect:
@@ -178,6 +178,7 @@ Wrong username or password. The username can be `root` or `mobile` (it depends o
 Make sure the iPhone is unlocked, plugged in, and that you tapped **Trust** on the phone. Try a different cable or USB port if it persists.
 
 ## Run the Bypass
+
 
 ```
 Notes:
