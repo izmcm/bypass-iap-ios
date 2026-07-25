@@ -1,0 +1,13 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/izabellamelo/Desktop/bypass-iap-ios/tweak/.theos/obj/debug/arm64/bypassIAPiOS.dylib'
+relocations:
+  - { offset: 0x1E, size: 0x8, addend: 0x0, symName: __logosLocalInit, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x98 }
+  - { offset: 0x45, size: 0x8, addend: 0x0, symName: '__logos_orig$_ungrouped$SKPaymentTransaction$transactionState', symObjAddr: 0x2510, symBinAddr: 0xC048, symSize: 0x0 }
+  - { offset: 0x99, size: 0x8, addend: 0x0, symName: '__logos_orig$_ungrouped$NSUserDefaults$boolForKey$', symObjAddr: 0x2518, symBinAddr: 0xC050, symSize: 0x0 }
+  - { offset: 0x1CD, size: 0x8, addend: 0x0, symName: '__logos_orig$_ungrouped$NSUserDefaults$doubleForKey$', symObjAddr: 0x2520, symBinAddr: 0xC058, symSize: 0x0 }
+  - { offset: 0x1F7, size: 0x8, addend: 0x0, symName: __logosLocalInit, symObjAddr: 0x0, symBinAddr: 0x4000, symSize: 0x98 }
+  - { offset: 0x237, size: 0x8, addend: 0x0, symName: '__logos_method$_ungrouped$SKPaymentTransaction$transactionState', symObjAddr: 0x98, symBinAddr: 0x4098, symSize: 0x80 }
+  - { offset: 0x27B, size: 0x8, addend: 0x0, symName: '__logos_method$_ungrouped$NSUserDefaults$boolForKey$', symObjAddr: 0x118, symBinAddr: 0x4118, symSize: 0x668 }
+  - { offset: 0x347, size: 0x8, addend: 0x0, symName: '__logos_method$_ungrouped$NSUserDefaults$doubleForKey$', symObjAddr: 0x780, symBinAddr: 0x4780, symSize: 0x368 }
+...
