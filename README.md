@@ -7,6 +7,7 @@ This code is released strictly for educational and scientific research. Do not u
 ## README Structure
 * [Repository organization](#repository-organization)
 * [Considered Badges](#considered-badges)
+* [Security Concerns](#security-concerns)
 * [Jailbroken iPhone](#jailbroken-iphone)
   * [Environment Setup](#environment-setup)
   * [Building and Running the Tweak](#building-and-running-the-tweak)
@@ -14,7 +15,6 @@ This code is released strictly for educational and scientific research. Do not u
 * [Security Research Device (SRD)](#security-research-device-srd)
 * [Experiments](#experiments)
 * [Troubleshooting](#troubleshooting)
-* [Disclaimer of Damages](#disclaimer-of-damages)
 * [License](#license)
 
 ## Repository organization
@@ -48,7 +48,32 @@ bypass-iap-ios/
 
 ## Considered Badges
 The considered badges are: Available, Functional, Sustainable and Reproducible.
- 
+
+## Security Concerns
+
+This artifact is a runtime bypass for iOS In-App Purchase checks. It is provided
+solely for educational and scientific research. Read this before running it.
+
+**What it does.** The tweak/dylib hooks the IAP logic of a target app at runtime
+and forces entitlement checks to pass, demonstrating flaws in apps that ship
+without server-side receipt validation. It does not exfiltrate data, contact any
+network service, or persist beyond the app it is injected into.
+
+**Safe-usage requirements.**
+- **Use a dedicated, owned device.** Jailbreak and test on an iPhone you own and
+  are willing to wipe — never your daily phone. Back it up first.
+- **Only target apps you are authorized to test** (the included
+  [BypassIAPTestApp](BypassIAPTestApp/) or apps you own/have permission to
+  analyze). Do not use it to access paid content you have not paid for.
+- **Jailbreaking lowers the device's security posture.** A jailbroken iPhone
+  disables Apple's code-signing and sandbox protections and should not hold
+  personal accounts or sensitive data while used for this research.
+- The SRD path avoids jailbreaking by using Apple's official Security Research
+  Device, which is the safer environment when available.
+
+Use of this material is entirely at your own risk; see [License](#license) for
+the full warranty and liability disclaimer.
+
 ## Jailbroken iPhone
 
 This is the primary path, tested on an **iPhone 7 running iOS 15.8.8, jailbroken with Dopamine**. It covers the one-time environment setup, building and installing the tweak, and the everyday edit–test loop. If instead you have an official Apple **Security Research Device**, skip ahead to [Security Research Device (SRD)](#security-research-device-srd).
@@ -418,30 +443,7 @@ Modern rootless jailbreaks (Dopamine) use **ElleKit**, not the old MobileSubstra
 ### BypassIAPTestApp: "Product not available" / "Product not loaded yet" when tapping Buy Premium.
 The demo app loads its product from the local [Products.storekit](BypassIAPTestApp/BypassIAPTestApp/Products.storekit) configuration, which Xcode only injects when that file is selected in the scheme. Open the app in Xcode, go to **Product > Scheme > Edit Scheme… > Run > Options**, set **StoreKit Configuration** to `Products.storekit`, then run again.
 
-## Disclaimer of Damages
-Use of this script is at all times "at your own risk". If you are dissatisfied with any aspect of any of these terms and conditions or any other policies, your sole remedy is to discontinue the use of the material. In no event will I or any contributors be liable to any user or third party for any damages resulting from the use or inability to use this material, whether based on warranty, contract, tort, or any other legal theory, and whether the site is or not advised of the possibility of such damages. I accept no responsibility for any loss, damage, or liability arising out of or in connection with this material. In no event will I be liable for any indirect, special, punitive, exemplary, incidental, or consequential damages. This limitation will apply whether or not the other party has been advised of the possibility of such damages.
+## License
 
-## LICENSE
-```
-MIT License
-
-Copyright (c) 2026 Izabella Melo
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+Released under the MIT License. The full text, including the warranty and
+liability disclaimer, is in the [LICENSE](LICENSE) file.
